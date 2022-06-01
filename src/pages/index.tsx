@@ -1,6 +1,7 @@
-import { Box, Flex, HStack, Image, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { Flex, HStack, Icon, Image, Input, Text } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { Header } from '../components/Header'
+import { RiSearchLine } from "react-icons/ri";
 
 const Home: NextPage = () => {
   return (
@@ -13,38 +14,67 @@ const Home: NextPage = () => {
       <Flex
         w="100%"
         maxWidth={1480}
-        h="100vh"
         mx="auto"
-        mt="2rem"
-        px="6"
+        mt={["12","4"]}
+        align="center"
+        px={["2","6"]}
       >
       <Flex
         direction="column"
         justifyContent="space-between"
         align="center"
-        h="90vh"
       >
         <Flex
-          h="100%"
           align="center"
           justifyContent="flex-end"
         >
           <HStack
-            spacing="2rem"
-            fontSize="1.5rem"
+            spacing={["1rem","5rem"]}
+            fontSize={["1.1rem","1.5rem"]}
             fontWeight="medium"
             color="gray.500"
           >
-            <Text as="button">Automoveis</Text>
+            <Text
+              as="button"
+              color="gray.800"
+            >
+              Automoveis
+            </Text>
             <Text as="button">Caminhoes</Text>
             <Text as="button">Onibus</Text>
             <Text as="button" >Vans</Text>
           </HStack>
         </Flex >
         <Flex
+          flex="1"
+          py={["3","4"]}
+          px={["3","8"]}
+          mt="10"
+          width="100%"
+          maxWidth={["19rem","39rem"]}
+          maxHeight={["3rem","3.5rem"]}
+          alignSelf="center"
+          justifyContent="space-between"
+          color="gray.800"
+          bg="gray.200"
+          borderRadius="full"
+        >
+          <Input
+            color="gray.600"
+            variant="unstyled"
+            px="4"
+            mr="4"
+            placeholder="Buscar automoveis"
+            _placeholder={{ color: 'gray.500'}}
+            // w="100%"
+            width="auto"
+          />
+          <Icon as={RiSearchLine} fontSize="20"/>
+        </Flex>
+        <Flex
           width="100%"
           maxH="35rem"
-          mt="2rem"
+          mt={["5rem"]}
         >
           <Image
             src="https://www.motortrend.com/uploads/sites/10/2022/02/2022-mercedes-benz-cla-coupe-250-4wd-sedan-angular-front.png"

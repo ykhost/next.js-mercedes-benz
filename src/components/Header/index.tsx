@@ -1,8 +1,13 @@
-import { Button, Flex, HStack, Text, Image } from "@chakra-ui/react";
+import { Button, Flex, HStack, Text, Image, useBreakpointValue } from "@chakra-ui/react";
 // import Image from "next/image";
 
 
 export function Header () {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true
+  })
+
   return (
     <Flex
       as="header"
@@ -28,16 +33,26 @@ export function Header () {
       <HStack
         spacing={["6", "8"]}
         mx={["6", "8"]}
-        pr={["6", "8"]}
+        pr={["0", "8"]}
         py="1"
         color="gray.700"
       >
         <Text as="button">CARS</Text>
-        <Text as="button">HISTORY</Text>
-        <Text as="button">TECHNOLOGY</Text>
+        <Text as="button">FIPE</Text>
+        <Text as="button">VIN</Text>
       </HStack>
 
-      <Button size="sm" fontWeight="medium" colorScheme="blackAlpha" color="gray.50">CONTACT US</Button>
+      {isWideVersion && (
+        <Button
+        size="sm"
+        fontWeight="medium"
+        colorScheme="blackAlpha"
+        color="gray.50"
+      >
+        CONTACT US
+      </Button>
+      )}
+
     </Flex>
   )
 }
