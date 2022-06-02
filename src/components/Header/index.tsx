@@ -24,8 +24,6 @@ export function Header () {
         fontSize={["2xl", "3xl"]}
         fontWeight="bold"
         letterSpacing="tight"
-        w="64"
-
       >
         CARFAN.
       </Text>
@@ -35,20 +33,20 @@ export function Header () {
         mx={["6", "8"]}
         pr={["0", "8"]}
         py="1"
-        color="gray.700"
+        color="gray.600"
       >
-        <Text as="button">CARS</Text>
+        <Text as="button" color="gray.900">CARS</Text>
         <Text as="button">FIPE</Text>
         <Text as="button">VIN</Text>
       </HStack>
 
       {isWideVersion && (
         <Button
-        size="sm"
-        fontWeight="medium"
-        colorScheme="blackAlpha"
-        color="gray.50"
-      >
+          size="md"
+          fontWeight="medium"
+          bg="black"
+          color="gray.50"
+        >
         CONTACT US
       </Button>
       )}
