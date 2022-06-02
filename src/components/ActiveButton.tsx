@@ -9,7 +9,7 @@ export function ActiveButton ({ children, isActive }: ActiveButtonProps) {
   return (
     <>
       {cloneElement(children, {
-        color: isActive? 'black' : 'gray.600'
+        color: isActive? 'black' : 'gray.500'
       })}
     </>
   )

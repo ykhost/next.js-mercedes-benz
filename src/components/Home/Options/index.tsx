@@ -1,6 +1,7 @@
-import { Flex, HStack, Button } from "@chakra-ui/react";
+import { Flex, HStack } from "@chakra-ui/react";
 import { typeSearch } from "../../../Interfaces/searchType";
-import { ActiveButton } from "../../ActiveButton";
+import { Button } from "./Button";
+
 
 
 interface OptionsProps {
@@ -8,9 +9,42 @@ interface OptionsProps {
   typeSearch: typeSearch;
 }
 
+interface ButtonProps {
+  name: string;
+  vehicleType: typeSearch;
+  isActive: boolean
+}
+
+const buttons: ButtonProps[] = [
+  { name: "Automoveis",
+    vehicleType: "automobiles",
+    isActive: false
+  },
+  { name: "Caminhoes",
+    vehicleType: "trucks",
+    isActive: false
+  },
+  { name: "Onibus",
+    vehicleType: "bus",
+    isActive: false
+  },
+  { name: "Vans",
+    vehicleType: "vans",
+    isActive: false
+  },
+]
+
 export function Options ({ typeSearch, handleSelectSearch }: OptionsProps) {
 
-
+  const showButtons = buttons.map(button => {
+    if (typeSearch === button.vehicleType) {
+      return {
+        ...button,
+        isActive: true
+      }
+    }
+    return button
+  })
 
   return (
     <Flex
@@ -23,47 +57,18 @@ export function Options ({ typeSearch, handleSelectSearch }: OptionsProps) {
         fontWeight="medium"
         color="gray.500"
       >
-        <ActiveButton isActive={true}>
+
+        {showButtons.map(button => (
           <Button
-            fontSize={["1.1rem","1.5rem"]}
-            fontWeight="medium"
-            _hover={{ bg: "inherit", color: "black" }}
-            _focus={{
-
-            }}
-            onClick={() => handleSelectSearch("automobiles")}
+            key={button.name}
+            handleSelectSearch={handleSelectSearch}
+            isActive={button.isActive}
+            vehicleType={button.vehicleType}
           >
-            Automoveis
+            {button.name}
           </Button>
-        </ActiveButton>
+        ))}
 
-        <Button
-          fontSize={["1.1rem","1.5rem"]}
-          fontWeight="medium"
-          _hover={{ bg: "inherit", color: "black" }}
-          _focus={{}}
-          onClick={() => handleSelectSearch("trucks")}
-        >
-          Caminhoes
-        </Button>
-
-        <Button
-          fontSize={["1.1rem","1.5rem"]}
-          fontWeight="medium"
-          _focus={{}}
-
-          onClick={() => handleSelectSearch("bus")}
-        >
-          Onibus
-        </Button>
-
-        <Button
-          fontSize={["1.1rem","1.5rem"]}
-          fontWeight="medium"
-          onClick={() => handleSelectSearch("vans")}
-        >
-          Vans
-        </Button>
       </HStack>
     </Flex >
   )
